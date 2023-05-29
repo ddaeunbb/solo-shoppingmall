@@ -1,17 +1,35 @@
 import tw from "tailwind-styled-components";
+import { useDispatch } from "react-redux";
+import { closeModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
-import HamburgerModalProps from "../../types/HamburgerModalProps";
 
-export default function HamburgerModal({ modalSwitch }: HamburgerModalProps) {
+export default function HamburgerModal() {
+  const dispatch = useDispatch();
+
   return (
     <ModalContainer>
-      <Link to="/" onClick={modalSwitch.bind(null, false)}>
+      <Link
+        to="/"
+        onClick={() => {
+          dispatch(closeModal());
+        }}
+      >
         <ModalList>김다은님, 안녕하세요!</ModalList>
       </Link>
-      <Link to="/products/list" onClick={modalSwitch.bind(null, false)}>
+      <Link
+        to="/products/list"
+        onClick={() => {
+          dispatch(closeModal());
+        }}
+      >
         <ModalList>상품리스트 페이지</ModalList>
       </Link>
-      <Link to="/bookmark" onClick={modalSwitch.bind(null, false)}>
+      <Link
+        to="/bookmark"
+        onClick={() => {
+          dispatch(closeModal());
+        }}
+      >
         <ModalList>북마크 페이지</ModalList>
       </Link>
     </ModalContainer>
