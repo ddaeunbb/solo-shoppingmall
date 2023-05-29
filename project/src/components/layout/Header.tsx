@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <Headerbox>
+    <HeaderContainer>
       <div className="flex items-center gap-3">
         <Link to="/">
           <Image src="../../../public/logo.png" width={52} height={52} />
@@ -13,12 +13,12 @@ export default function Header() {
         </Link>
       </div>
       <Image src="../../../public/hamburger.png" width={32} height={9} />
-    </Headerbox>
+    </HeaderContainer>
   );
 }
 
 //tailwind
-const Headerbox = tw.div`
+const HeaderContainer = tw.div`
   box-border
   h-20
   w-100%
