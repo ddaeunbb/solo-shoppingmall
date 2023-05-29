@@ -1,11 +1,11 @@
 import tw from "tailwind-styled-components";
+import { useDispatch } from "react-redux";
+import { switchModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
-import HamburgerModalProps from "../../types/HamburgerModalProps";
 
-export default function Header({
-  modalState,
-  modalSwitch,
-}: HamburgerModalProps) {
+export default function Header() {
+  const dispatch = useDispatch();
+
   return (
     <HeaderContainer>
       <div className="flex items-center gap-3">
@@ -20,7 +20,9 @@ export default function Header({
         src="../../../public/hamburger.png"
         width={32}
         height={9}
-        onClick={modalSwitch.bind(null, !modalState)}
+        onClick={() => {
+          dispatch(switchModal());
+        }}
       />
     </HeaderContainer>
   );
