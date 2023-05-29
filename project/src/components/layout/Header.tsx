@@ -2,6 +2,8 @@ import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import { switchModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
+import hamburger from "../../assets/hamburger.png";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -10,14 +12,14 @@ export default function Header() {
     <HeaderContainer>
       <div className="flex items-center gap-3">
         <Link to="/">
-          <Image src="../../../public/logo.png" width={52} height={52} />
+          <Image src={logo} width={52} height={52} />
         </Link>
         <Link to="/">
           <LogoText>Smart</LogoText>
         </Link>
       </div>
       <Image
-        src="../../../public/hamburger.png"
+        src={hamburger}
         width={32}
         height={9}
         onClick={() => {
@@ -40,6 +42,7 @@ const HeaderContainer = tw.div`
   justify-between
   px-6
   sticky
+  top-0
 `;
 
 const LogoText = tw.h3`
@@ -48,7 +51,7 @@ const LogoText = tw.h3`
 `;
 
 const Image = tw.img`
- w-${(props) => props.width && props.width}
- h-${(props) => props.height && props.height}
- cursor-pointer
+  w-${(props) => props.width}
+  h-${(props) => props.height}
+  cursor-pointer
 `;

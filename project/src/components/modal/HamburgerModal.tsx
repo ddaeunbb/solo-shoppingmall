@@ -46,7 +46,7 @@ const ModalContainer = tw.ul`
   border-solid
   border
   border-slate-300
-  absolute
+  fixed
   top-16
   right-7
 `;
