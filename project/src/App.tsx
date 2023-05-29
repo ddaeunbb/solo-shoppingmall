@@ -1,6 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
-import Header from "./components/layout/header";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
 import Likes from "./pages/likes/Likes";
 import Products from "./pages/products/Products";
@@ -25,6 +26,8 @@ function App() {
         <Route path="/bookmark" element={<Likes />} />
         <Route path="/products/list" element={<Products />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
