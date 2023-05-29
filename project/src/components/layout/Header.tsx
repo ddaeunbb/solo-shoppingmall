@@ -1,7 +1,11 @@
 import tw from "tailwind-styled-components";
 import { Link } from "react-router-dom";
+import HamburgerModalProps from "../../types/HamburgerModalProps";
 
-export default function Header() {
+export default function Header({
+  modalState,
+  modalSwitch,
+}: HamburgerModalProps) {
   return (
     <HeaderContainer>
       <div className="flex items-center gap-3">
@@ -12,7 +16,12 @@ export default function Header() {
           <LogoText>Smart</LogoText>
         </Link>
       </div>
-      <Image src="../../../public/hamburger.png" width={32} height={9} />
+      <Image
+        src="../../../public/hamburger.png"
+        width={32}
+        height={9}
+        onClick={modalSwitch.bind(null, !modalState)}
+      />
     </HeaderContainer>
   );
 }
