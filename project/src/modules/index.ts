@@ -5,7 +5,7 @@ import productSlice from "./productSlice";
 
 export interface RootState {
   hamburgerModal: { isOpen: boolean };
-  productList: ApiDataInterFace[];
+  productList: {products : ApiDataInterFace[]};
 }
 
 const store = configureStore({

@@ -1,5 +1,7 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
+import { useEffect } from "react";
+import { setProducts } from "./modules/productSlice";
 import { RootState } from "./modules";
 import Header from "./components/layout/Header";
 import HamburgerModal from "./components/modal/HamburgerModal";
@@ -11,7 +13,16 @@ import Products from "./pages/products/Products";
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
+
+  useEffect(() => {
+    fetch(`https://dummyjson.com/products?limit=100`)
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setProducts(data.products));
+      });
+  }, []);
 
   return (
     <BrowserRouter>

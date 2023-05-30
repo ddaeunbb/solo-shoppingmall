@@ -43,6 +43,7 @@ const HeaderContainer = tw.div`
   px-6
   sticky
   top-0
+  z-10
 `;
 
 const LogoText = tw.h3`

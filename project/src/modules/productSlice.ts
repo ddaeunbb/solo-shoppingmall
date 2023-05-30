@@ -16,8 +16,18 @@ const productSlice = createSlice({
     setProducts: (state, action) => {
       state.products = action.payload;
     },
+
+    setBookmark: (state, action)=> {
+      state.products = state.products.map(product => {
+        if(product.id === action.payload){
+          if (product.bookmark === undefined) product.bookmark = true;
+          else product.bookmark = !product.bookmark;
+        }
+        return product
+      })
+    }
   },
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setProducts, setBookmark } = productSlice.actions;
 export default productSlice;

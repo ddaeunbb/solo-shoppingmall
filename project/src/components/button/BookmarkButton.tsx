@@ -1,14 +1,19 @@
 import tw from "tailwind-styled-components";
+import { useDispatch } from "react-redux";
 import bookmarkOn from '../../assets/bookmark/bookmark-on.png'
 import bookmarkOff from '../../assets/bookmark/bookmark-off.png'
+import { setBookmark } from "../../modules/productSlice";
 
 interface BookmarkButtonProps {
+  id: number;
   bookmark?: boolean;
 }
 
-export default function BookmarkButton({bookmark} : BookmarkButtonProps) {
+export default function BookmarkButton({id, bookmark} : BookmarkButtonProps) {
+  const dispatch = useDispatch();
+
   return (
-    <BookmarkButtonContainer style={{backgroundImage: `url('${bookmark ? bookmarkOn : bookmarkOff}')` }}/>
+    <BookmarkButtonContainer style={{backgroundImage: `url('${bookmark ? bookmarkOn : bookmarkOff}')` }} onClick={()=>{ dispatch(setBookmark(id))}}/>
   )
 }
 
