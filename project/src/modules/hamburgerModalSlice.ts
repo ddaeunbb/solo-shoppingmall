@@ -22,4 +22,6 @@ const hamburgerModalSlice = createSlice({
 });
 
 export const { switchModal, closeModal } = hamburgerModalSlice.actions;
+
+
 export default hamburgerModalSlice;

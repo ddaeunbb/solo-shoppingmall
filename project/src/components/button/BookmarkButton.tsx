@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import bookmarkOn from '../../assets/bookmark/bookmark-on.png'
 import bookmarkOff from '../../assets/bookmark/bookmark-off.png'
 import { setBookmark } from "../../modules/productSlice";
+import setLocalStorage from "../../utils/setLocalStorage";
 
 interface BookmarkButtonProps {
   id: number;
@@ -11,9 +12,13 @@ interface BookmarkButtonProps {
 
 export default function BookmarkButton({id, bookmark} : BookmarkButtonProps) {
   const dispatch = useDispatch();
+  const bookmarkHandler = (id: number) => {
+    dispatch(setBookmark(id));
+    setLocalStorage(id);
+  }
 
   return (
-    <BookmarkButtonContainer style={{backgroundImage: `url('${bookmark ? bookmarkOn : bookmarkOff}')` }} onClick={()=>{ dispatch(setBookmark(id))}}/>
+    <BookmarkButtonContainer style={{backgroundImage: `url('${bookmark ? bookmarkOn : bookmarkOff}')` }} onClick={()=> bookmarkHandler(id)}/>
   )
 }
 

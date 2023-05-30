@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ApiDataInterFace from "./apidata.interface";
 
-interface RootState {
+interface ProductType {
   products: ApiDataInterFace[];
 }
 
-const initialState: RootState = {
+const initialState: ProductType = {
   products: [],
 };
 
