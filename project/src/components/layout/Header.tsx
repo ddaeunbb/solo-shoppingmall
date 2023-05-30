@@ -2,8 +2,8 @@ import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import { switchModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import hamburger from "../../assets/hamburger.png";
+import logo from "../../assets/common/logo.png";
+import hamburger from "../../assets/common/hamburger.png";
 
 export default function Header() {
   const dispatch = useDispatch();
