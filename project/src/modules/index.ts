@@ -5,13 +5,13 @@ import productSlice from "./productSlice";
 
 export interface RootState {
   hamburgerModal: { isOpen: boolean };
-  products: ApiDataInterFace[];
+  productList: ApiDataInterFace[];
 }
 
 const store = configureStore({
   reducer: {
     hamburgerModal: hamburgerModalSlice.reducer,
-    productlist: productSlice.reducer,
+    productList: productSlice.reducer,
   },
 });
 

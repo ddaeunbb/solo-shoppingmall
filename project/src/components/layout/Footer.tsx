@@ -17,6 +17,7 @@ const FooterContainer = tw.footer`
   flex-col
   items-center
   justify-center
+  border-t
 `;
 
 const FooterText = tw.span`
