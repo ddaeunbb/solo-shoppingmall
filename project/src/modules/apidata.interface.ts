@@ -10,6 +10,7 @@ interface ApiDataInterFace {
   stock: number;
   thumbnail: string;
   title: string;
+  bookmark?: boolean;
 }
 
 export default ApiDataInterFace;

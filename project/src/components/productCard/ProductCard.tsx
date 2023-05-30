@@ -1,5 +1,6 @@
 import tw from "tailwind-styled-components";
 import ApiDataInterFace from "../../modules/apidata.interface";
+import BookmarkButton from "../button/BookmarkButton";
 
 interface ProductCardProps {
   product: ApiDataInterFace;
@@ -7,10 +8,11 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div>
+    <div className="justify-self-end">
       <ProductImage
-        style={{ backgroundImage: `url('${product.thumbnail}')` }}
-      />
+        style={{ backgroundImage: `url('${product.thumbnail}')` }}>
+          <BookmarkButton id={product.id} bookmark={product.bookmark}/>
+      </ProductImage>
       <div className="pl-5 pt-2">
         <ProductTitle>{product.title}</ProductTitle>
         <ProudctPrice>${product.price}</ProudctPrice>
@@ -29,6 +31,7 @@ bg-cover
 border
 border-slate-200
 cursor-pointer
+relative
 `;
 
 const ProductTitle = tw.h3`

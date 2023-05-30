@@ -1,35 +1,25 @@
 import tw from "tailwind-styled-components";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { setProducts } from "../../modules/productSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../modules";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
 export default function Main() {
-  const dispatch = useDispatch();
-  const [productList, setProductList] = useState<Array<ApiDataInterFace>>([]);
-
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=100`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setProducts(data.products));
-        setProductList(data.products.slice(0, 4));
-      });
-  }, []);
+  const productList = useSelector((state: RootState)  => state.productList.products);
+  const VIEWCOUNT:number = 4;
 
   return (
     <MainContainer>
       <ListText>상품리스트</ListText>
       <ProductContainer>
-        {productList.map((product) => (
+        {productList.slice(0, VIEWCOUNT).map((product: ApiDataInterFace) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </ProductContainer>
 
       <ListText>북마크리스트</ListText>
       <ProductContainer>
-        {productList.map((product) => (
+        {productList.filter(product => product.bookmark).slice(0, VIEWCOUNT).map((product: ApiDataInterFace) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </ProductContainer>
@@ -40,9 +30,10 @@ export default function Main() {
 // tailwind
 const MainContainer = tw.div`
   w-100vw
+  flex
   flex-col
+  items-center
   py-5
-  px-20
 `;
 
 const ProductContainer = tw.div`
@@ -50,10 +41,11 @@ const ProductContainer = tw.div`
   flex-wrap
   justify-center
   gap-5
-  p-5
+  py-10
 `;
 
 const ListText = tw.h1`
+  w-70vw
   font-semibold
   text-xl
 `;

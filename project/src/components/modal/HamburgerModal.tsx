@@ -49,6 +49,8 @@ const ModalContainer = tw.ul`
   fixed
   top-16
   right-7
+  z-10
+  overflow-hidden
 `;
 
 const ModalList = tw.li`
