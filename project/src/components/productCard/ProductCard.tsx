@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="justify-self-end">
+    <div>
       <ProductImage
         style={{ backgroundImage: `url('${product.thumbnail}')` }}>
           <BookmarkButton id={product.id} bookmark={product.bookmark}/>
