@@ -46,6 +46,12 @@ const ProductContainer = tw.div`
 
 const ListText = tw.h1`
   w-70vw
-  font-semibold
+  font-extrabold
   text-xl
+  text-white
+  bg-indigo-500
+  border-0
+  p-3
+  rounded-xl
+  shadow-lg
 `;
