@@ -24,3 +24,31 @@
   - 코드 수정 전 　 <img width="335" alt="스크린샷 2023-05-30 오후 10 46 28" src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/cdf64f7d-8a64-4aea-afec-f8d94027bc77">
   - 코드 수정 후 　 <img width="400" alt="스크린샷 2023-05-30 오후 10 46 34" src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/7cca3188-bc96-4a81-8a00-835478a1773b">
 
+#### 2-3 tailwind-styled-components props
+- tw 모듈은 동적으로 클래스를 어떻게 할당할 수 있을지에 대해 헤매고 있었는데 <a href="https://jiwoo84.tistory.com/173">링크</a>를 통해서 동적 클래스 할당하는 방법을 알 수 있게 되었습니다.
+##### 코드 수정 전 
+```
+const Image = tw.img`
+  w-${(props) => props.width}
+  h-${(props) => props.height}
+  cursor-pointer
+`
+```
+##### 코드 수정 후
+```
+interface ImageProps {
+  width: number;
+  height: number;
+}
+
+const Image = tw.img<ImageProps>`
+  w-${(props) => props.width}
+  h-${(props) => props.height}
+  cursor-pointer
+`
+```
+
+#### 2-4 action-payload type지정
+- 타입지정을 하지 않으면 any로 타입이 지정이 되어서, action-payload의 타입을 지정하게 되었습니다.
+- `@reduxjs/toolkit`에서 `PayloadAction`을 지원하고 있었으며, 이 모듈을 통해 쉽게 action-payload의 타입을 지정할 수 있었습니다.
+- 이는 <a href="https://redux-toolkit.js.org/tutorials/typescript#define-slice-state-and-action-types">Redux Toolkit 공식문서</a>에서 확인할 수 있었습니다.
