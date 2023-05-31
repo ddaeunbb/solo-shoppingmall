@@ -51,7 +51,12 @@ const LogoText = tw.h3`
   font-extrabold  
 `;
 
-const Image = tw.img`
+interface ImageProps {
+  width: number;
+  height: number;
+}
+
+const Image = tw.img<ImageProps>`
   w-${(props) => props.width}
   h-${(props) => props.height}
   cursor-pointer
