@@ -13,8 +13,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         style={{ backgroundImage: `url('${product.thumbnail}')` }}>
           <BookmarkButton id={product.id} bookmark={product.bookmark}/>
       </ProductImage>
-      <div className="pl-5 pt-2">
-        <ProductTitle>{product.title}</ProductTitle>
+      <div className="pl-2 pt-2">
+        <ProductTitle>
+          {product.title.length  > 10 ? product.title.slice(0,25)+'...' : product.title}
+        </ProductTitle>
         <ProudctPrice>${product.price}</ProudctPrice>
       </div>
     </div>
@@ -32,6 +34,9 @@ border
 border-slate-200
 cursor-pointer
 relative
+shadow-lg
+hover:scale-105
+duration-300
 `;
 
 const ProductTitle = tw.h3`

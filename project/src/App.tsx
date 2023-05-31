@@ -6,11 +6,11 @@ import Header from "./components/layout/Header";
 import HamburgerModal from "./components/modal/HamburgerModal";
 import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
-import Likes from "./pages/likes/Likes";
+import Bookmark from "./pages/bookmark/Bookmark";
 import Products from "./pages/products/Products";
 
 function App() {
-  const [data, setUrl] = useFetch('https://dummyjson.com/products?limit=100');
+  useFetch('https://dummyjson.com/products?limit=100');
   const isOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
   
   return (
@@ -19,7 +19,7 @@ function App() {
       {isOpen && <HamburgerModal />}
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/bookmark" element={<Likes />} />
+        <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/products/list" element={<Products />} />
       </Routes>
 

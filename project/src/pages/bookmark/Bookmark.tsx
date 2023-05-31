@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Likes() {
+export default function Bookmark() {
   return <div>Likes</div>;
 }
