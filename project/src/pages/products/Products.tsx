@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 import Filter from "../../components/filter/Filter";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
-import { switchModal } from "../../modules/hamburgerModalSlice";
+import { closeModal } from "../../modules/hamburgerModalSlice";
 import Categories from "../../types/categories";
 import ProductCard from "../../components/productCard/ProductCard";
 
@@ -15,7 +15,7 @@ const Products : FC  = () => {
   switch(category){
     case Categories.total :
       return (
-        <ProductsContainer onClick={()=> dispatch(switchModal())}>
+        <ProductsContainer onClick={()=> dispatch(closeModal())}>
           <Filter />
           <ProductCardContainer>
             {productList.map(product => 
@@ -27,7 +27,7 @@ const Products : FC  = () => {
     
     default :
       return (
-        <ProductsContainer onClick={()=> dispatch(switchModal())}>
+        <ProductsContainer onClick={()=> dispatch(closeModal())}>
           <Filter />
           <ProductCardContainer>
             {productList // 

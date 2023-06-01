@@ -2,7 +2,7 @@ import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
-import { switchModal } from "../../modules/hamburgerModalSlice";
+import { closeModal } from "../../modules/hamburgerModalSlice";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
@@ -12,7 +12,7 @@ const Main : FC = () => {
   const VIEWCOUNT:number = 4;
 
   return (
-    <MainContainer onClick={()=> dispatch(switchModal())}>
+    <MainContainer onClick={()=> dispatch(closeModal())}>
       <ListText>상품리스트</ListText>
       <ProductContainer>
         {productList.slice(0, VIEWCOUNT).map((product: ApiDataInterFace) => (
