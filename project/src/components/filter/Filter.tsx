@@ -1,12 +1,11 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { FilterContainer, FilterTab, FilterImg, FilterText } from "./Filter.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules";
 import { setTab } from "../../modules/filterSlice";
 import { CategoryName } from "../../types/categories";
 import Categories from "../../types/categories";
-
-// png
+//png
 import total from '../../assets/filter/total.png'
 import smartphone from '../../assets/filter/smartphone.png'
 import laptop from '../../assets/filter/laptop.png'
@@ -24,67 +23,47 @@ const Filter: FC = () => {
   return (
     <FilterContainer>
       <FilterTab>
-        <FilterImg check={category === Categories.total} src={total} onClick={()=>tabHandler(Categories.total)}/>
+        <FilterImg 
+        check={category === Categories.total} 
+        src={total} 
+        onClick={()=>tabHandler(Categories.total)}/>
         <FilterText>전체</FilterText>
       </FilterTab>
 
       <FilterTab>
-        <FilterImg check={category === Categories.smartphones} src={smartphone} onClick={()=>tabHandler(Categories.smartphones)}/>
+        <FilterImg 
+        check={category === Categories.smartphones} 
+        src={smartphone} 
+        onClick={()=>tabHandler(Categories.smartphones)}/>
         <FilterText>스마트폰</FilterText>
       </FilterTab>
 
       <FilterTab>
-        <FilterImg check={category === Categories.laptops} src={laptop} onClick={()=>tabHandler(Categories.laptops)}/>
+        <FilterImg 
+        check={category === Categories.laptops} 
+        src={laptop} 
+        onClick={()=>tabHandler(Categories.laptops)}/>
         <FilterText>노트북</FilterText>
       </FilterTab>
 
       <FilterTab>
-      <FilterImg check={category === Categories.automotive} src={automotive} onClick={()=>tabHandler(Categories.automotive)}/>
+      <FilterImg 
+      check={category === Categories.automotive} 
+      src={automotive} 
+      onClick={()=>tabHandler(Categories.automotive)}/>
       <FilterText>자동차</FilterText>
       </FilterTab>
 
       <FilterTab>
-      <FilterImg check={category === Categories.motorcycle} src={motocycle} onClick={()=>tabHandler(Categories.motorcycle)}/>
+      <FilterImg 
+      check={category === Categories.motorcycle} 
+      src={motocycle} 
+      onClick={()=>tabHandler(Categories.motorcycle)}/>
       <FilterText>오토바이</FilterText>
       </FilterTab>
 
     </FilterContainer>
   )
 }
-
-// tailwind
-const FilterContainer = tw.ul`
-  w-100vw;
-  flex
-  h-43;
-  gap-5
-  my-10
-  justify-center
-`
-
-const FilterTab = tw.li`
-  flex-col
-  text-center
-`
-
-interface FilterImgProps {
-  check: boolean;
-}
-
-const FilterImg = tw.img<FilterImgProps>`
-  w-16
-  h-16
-  border
-  rounded-full
-  p-2
-  ${(props) => props.check && 'bg-indigo-300'}
-  hover:bg-indigo-300
-  cursor-pointer
-`
-
-const FilterText = tw.span`
-  text-sm
-  font-semibold
-`
 
 export default Filter;

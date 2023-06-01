@@ -1,5 +1,5 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { ProductCardContainer, ProductsContainer } from "./Products.styled";
 import Filter from "../../components/filter/Filter";
 import useUnlimitScroll from "../../hooks/useUnlimitScroll";
 import { useSelector, useDispatch } from "react-redux";
@@ -44,22 +44,5 @@ const Products : FC  = () => {
       )
   }
 }
-
-// tailwind
-const ProductsContainer = tw.div`
-  w-100vw;
-  flex-col
-  justify-center
-  items-center
-`
-
-const ProductCardContainer = tw.div`
-  flex
-  flex-wrap
-  justify-center
-  gap-5
-  py-5
-  mx-14
-`;
 
 export default Products;
