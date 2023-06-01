@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import ApiDataInterFace from "./apidata.interface";
 
 interface ProductType {
@@ -13,11 +13,11 @@ const productSlice = createSlice({
   name: "productSlice",
   initialState,
   reducers: {
-    setProducts: (state, action) => {
+    setProducts: (state, action: PayloadAction<ApiDataInterFace[]>) => {
       state.products = action.payload;
     },
 
-    setBookmark: (state, action)=> {
+    setBookmark: (state, action: PayloadAction<number>)=> {
       state.products = state.products.map(product => {
         if(product.id === action.payload){
           if (product.bookmark === undefined) product.bookmark = true;

@@ -1,16 +1,18 @@
 import { FC } from "react";
 import tw from "tailwind-styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
+import { switchModal } from "../../modules/hamburgerModalSlice";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
 const Main : FC = () => {
+  const dispatch = useDispatch();
   const productList = useSelector((state: RootState)  => state.productList.products);
   const VIEWCOUNT:number = 4;
 
   return (
-    <MainContainer>
+    <MainContainer onClick={()=> dispatch(switchModal())}>
       <ListText>상품리스트</ListText>
       <ProductContainer>
         {productList.slice(0, VIEWCOUNT).map((product: ApiDataInterFace) => (

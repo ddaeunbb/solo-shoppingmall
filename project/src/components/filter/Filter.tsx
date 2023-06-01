@@ -24,27 +24,27 @@ const Filter: FC = () => {
   return (
     <FilterContainer>
       <FilterTab>
-        <FilterImg isChecked={category === Categories.total} src={total} onClick={()=>tabHandler(Categories.total)}/>
+        <FilterImg check={category === Categories.total} src={total} onClick={()=>tabHandler(Categories.total)}/>
         <FilterText>전체</FilterText>
       </FilterTab>
 
       <FilterTab>
-        <FilterImg isChecked={category === Categories.smartphones} src={smartphone} onClick={()=>tabHandler(Categories.smartphones)}/>
+        <FilterImg check={category === Categories.smartphones} src={smartphone} onClick={()=>tabHandler(Categories.smartphones)}/>
         <FilterText>스마트폰</FilterText>
       </FilterTab>
 
       <FilterTab>
-        <FilterImg isChecked={category === Categories.laptops} src={laptop} onClick={()=>tabHandler(Categories.laptops)}/>
+        <FilterImg check={category === Categories.laptops} src={laptop} onClick={()=>tabHandler(Categories.laptops)}/>
         <FilterText>노트북</FilterText>
       </FilterTab>
 
       <FilterTab>
-      <FilterImg isChecked={category === Categories.automotive} src={automotive} onClick={()=>tabHandler(Categories.automotive)}/>
+      <FilterImg check={category === Categories.automotive} src={automotive} onClick={()=>tabHandler(Categories.automotive)}/>
       <FilterText>자동차</FilterText>
       </FilterTab>
 
       <FilterTab>
-      <FilterImg isChecked={category === Categories.motorcycle} src={motocycle} onClick={()=>tabHandler(Categories.motorcycle)}/>
+      <FilterImg check={category === Categories.motorcycle} src={motocycle} onClick={()=>tabHandler(Categories.motorcycle)}/>
       <FilterText>오토바이</FilterText>
       </FilterTab>
 
@@ -68,7 +68,7 @@ const FilterTab = tw.li`
 `
 
 interface FilterImgProps {
-  isChecked : boolean;
+  check: boolean;
 }
 
 const FilterImg = tw.img<FilterImgProps>`
@@ -77,7 +77,7 @@ const FilterImg = tw.img<FilterImgProps>`
   border
   rounded-full
   p-2
-  ${(props) => props.isChecked && 'bg-indigo-300'}
+  ${(props) => props.check && 'bg-indigo-300'}
   hover:bg-indigo-300
   cursor-pointer
 `

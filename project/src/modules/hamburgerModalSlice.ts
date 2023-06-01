@@ -12,10 +12,10 @@ const hamburgerModalSlice = createSlice({
   name: "hamburgerModalSlice",
   initialState,
   reducers: {
-    switchModal: (state: HamburgerModalType) => {
+    switchModal: (state) => {
       state.isOpen = !state.isOpen;
     },
-    closeModal: (state: HamburgerModalType) => {
+    closeModal: (state) => {
       state.isOpen = false;
     },
   },
