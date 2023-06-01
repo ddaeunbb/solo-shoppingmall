@@ -5,6 +5,7 @@ import useFetch from "./hooks/useFetch";
 import { RootState } from "./modules";
 import Header from "./components/layout/Header";
 import HamburgerModal from "./components/modal/HamburgerModal";
+import DetailModal from "./components/modal/detailModal";
 import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
 import Bookmark from "./pages/bookmark/Bookmark";
@@ -12,12 +13,14 @@ import Products from "./pages/products/Products";
 
 const App : FC = () => {
   useFetch('https://dummyjson.com/products?limit=100');
-  const isOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
+  const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
+  const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
   
   return (
     <BrowserRouter>
       <Header />
-      {isOpen && <HamburgerModal />}
+      {isHamburgerOpen && <HamburgerModal />}
+      {isDetailOpen && <DetailModal />}
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/bookmark" element={<Bookmark />} />

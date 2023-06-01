@@ -15,14 +15,17 @@ const detailModalSlice = createSlice({
   name: "detailModalSlice",
   initialState,
   reducers : {
-    switchDetailModal : (state) => {
-      state.isOpen = !state.isOpen;
+    switchDetailModal : (state, action: PayloadAction<boolean>) => {
+      state.isOpen = action.payload;
     },
-    setModalContent : (state, action: PayloadAction<ApiDataInterFace>) => {
+    setDetailModalContent : (state, action: PayloadAction<ApiDataInterFace>) => {
       state.modalContent = action.payload;
+    },
+    setDetailModalBookmark : (state) => {
+      state.modalContent.bookmark = !state.modalContent.bookmark;
     }
   }
 })
 
-export const { switchDetailModal, setModalContent } = detailModalSlice.actions; 
+export const { switchDetailModal, setDetailModalBookmark ,setDetailModalContent } = detailModalSlice.actions; 
 export default detailModalSlice;
