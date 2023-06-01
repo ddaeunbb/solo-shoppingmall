@@ -1,5 +1,5 @@
 import { FC } from "react"
-import tw from "tailwind-styled-components";
+import { DetailModalContainer } from "./DetailModal.style";
 import DetailCard from "../productCard/DetailCard";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
@@ -15,18 +15,5 @@ const DetailModal :FC  = () => {
     </DetailModalContainer>
   )
 }
-
-// tailwind
-const DetailModalContainer = tw.div`
-  w-screen
-  h-screen
-  bg-white/50
-  backdrop-blur-sm
-  fixed
-  z-50
-  flex
-  justify-center
-  items-center
-`
 
 export default DetailModal;

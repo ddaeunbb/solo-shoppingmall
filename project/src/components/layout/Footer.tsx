@@ -1,5 +1,5 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { FooterContainer, FooterText } from "./Footer.styled";
 
 const Footer : FC = () => {
   return (
@@ -9,21 +9,4 @@ const Footer : FC = () => {
     </FooterContainer>
   );
 }
-
-// tailwind
-const FooterContainer = tw.footer`
-  w-100vw
-  h-20
-  flex
-  flex-col
-  items-center
-  justify-center
-  border-t
-`;
-
-const FooterText = tw.span`
-  text-sm
-  text-slate-400
-`;
-
 export default Footer

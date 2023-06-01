@@ -1,5 +1,5 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { ProductImage, ProductTitle, ProudctPrice } from "./ProductCard.styled";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import { useDispatch } from "react-redux";
 import { switchDetailModal, setDetailModalContent } from "../../modules/detailModalSlice";
@@ -33,31 +33,5 @@ const ProductCard : FC<ProductCardProps> = (props) => {
     </div>
   );
 }
-
-// tailwind
-const ProductImage = tw.div`
-w-64
-h-48
-rounded-2xl
-bg-center
-bg-cover
-border
-border-slate-200
-cursor-pointer
-relative
-shadow-lg
-hover:scale-105
-duration-300
-`;
-
-const ProductTitle = tw.h3`
-  text-base
-  font-semibold
-`;
-
-const ProudctPrice = tw.span`
-  text-sm
-  font-light
-`;
 
 export default ProductCard;

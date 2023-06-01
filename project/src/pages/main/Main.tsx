@@ -1,5 +1,5 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { MainContainer, ProductContainer, ListText } from "./Main.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
 import { closeModal } from "../../modules/hamburgerModalSlice";
@@ -29,34 +29,5 @@ const Main : FC = () => {
     </MainContainer>
   );
 }
-
-// tailwind
-const MainContainer = tw.div`
-  w-100vw
-  flex
-  flex-col
-  items-center
-  py-5
-`;
-
-const ProductContainer = tw.div`
-  flex
-  flex-wrap
-  justify-center
-  gap-5
-  py-10
-`;
-
-const ListText = tw.h1`
-  w-70vw
-  font-extrabold
-  text-xl
-  text-white
-  bg-indigo-500
-  border-0
-  p-3
-  rounded-xl
-  shadow-lg
-`;
 
 export default Main;

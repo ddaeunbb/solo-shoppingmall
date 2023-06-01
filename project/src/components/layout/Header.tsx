@@ -1,5 +1,5 @@
 import { FC } from "react";
-import tw from "tailwind-styled-components";
+import { HeaderContainer, LogoText, Image } from "./Header.styled";
 import { useDispatch } from "react-redux";
 import { switchModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
@@ -30,38 +30,5 @@ const Header: FC  = () => {
     </HeaderContainer>
   );
 }
-
-//tailwind
-const HeaderContainer = tw.div`
-  box-border
-  h-20
-  w-100%
-  bg-white
-  drop-shadow-lg
-  flex
-  items-center
-  justify-between
-  px-6
-  sticky
-  top-0
-  z-10
-`;
-
-const LogoText = tw.h3`
-  text-3xl
-  font-extrabold  
-`;
-
-interface ImageProps {
-  width: number;
-  height: number;
-}
-
-const Image = tw.img<ImageProps>`
-  w-${(props) => props.width}
-  h-${(props) => props.height}
-  cursor-pointer
-`;
-
 
 export default Header;
