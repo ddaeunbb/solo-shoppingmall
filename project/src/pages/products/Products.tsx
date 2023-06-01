@@ -4,7 +4,6 @@ import Filter from "../../components/filter/Filter";
 import { useSelector } from "react-redux";
 import { RootState } from "../../modules";
 import Categories from "../../types/categories";
-import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
 const Products : FC  = () => {
@@ -17,9 +16,9 @@ const Products : FC  = () => {
         <ProductsContainer>
           <Filter />
           <ProductCardContainer>
-            {productList.map((product: ApiDataInterFace) => (
-            <ProductCard key={product.id} product={product} />
-            ))}
+            {productList.map(product => 
+              (<ProductCard key={product.id} product={product} />)
+            )}
           </ProductCardContainer>
         </ProductsContainer>
       )
@@ -30,8 +29,8 @@ const Products : FC  = () => {
           <Filter />
           <ProductCardContainer>
             {productList // 
-              .filter((product: ApiDataInterFace) => product.category === category)
-              .map((product: ApiDataInterFace) =>
+              .filter(product => product.category === category)
+              .map(product =>
               (<ProductCard key={product.id} product={product} />)
             )}
           </ProductCardContainer>
