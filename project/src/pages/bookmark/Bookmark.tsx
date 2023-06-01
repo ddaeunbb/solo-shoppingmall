@@ -1,5 +1,7 @@
-import React from "react";
+import { FC } from "react";
 
-export default function Bookmark() {
-  return <div>Likes</div>;
+const Bookmark : FC = () => {
+  return <div>Bookmark</div>;
 }
+
+export default Bookmark;

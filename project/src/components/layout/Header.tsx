@@ -1,3 +1,4 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import { switchModal } from "../../modules/hamburgerModalSlice";
@@ -5,7 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/common/logo.png";
 import hamburger from "../../assets/common/hamburger.png";
 
-export default function Header() {
+const Header: FC  = () => {
   const dispatch = useDispatch();
 
   return (
@@ -61,3 +62,6 @@ const Image = tw.img<ImageProps>`
   h-${(props) => props.height}
   cursor-pointer
 `;
+
+
+export default Header;

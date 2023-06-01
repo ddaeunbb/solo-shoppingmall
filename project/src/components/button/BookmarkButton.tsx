@@ -1,3 +1,4 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import bookmarkOn from '../../assets/bookmark/bookmark-on.png'
@@ -10,7 +11,8 @@ interface BookmarkButtonProps {
   bookmark?: boolean;
 }
 
-export default function BookmarkButton({id, bookmark} : BookmarkButtonProps) {
+const BookmarkButton : FC<BookmarkButtonProps> = (props) => {
+  const { id, bookmark } = props;
   const dispatch = useDispatch();
   const bookmarkHandler = (id: number) => {
     dispatch(setBookmark(id));
@@ -37,3 +39,5 @@ const BookmarkButtonContainer = tw.button`
   duration-100
   cursor-pointer
 `
+
+export default BookmarkButton;

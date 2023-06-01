@@ -1,3 +1,4 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import Filter from "../../components/filter/Filter";
 import { useSelector } from "react-redux";
@@ -6,7 +7,7 @@ import Categories from "../../types/categories";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
-export default function Products() {
+const Products : FC  = () => {
   const productList = useSelector((state: RootState)  => state.productList.products);
   const category = useSelector((state: RootState) => state.filterList.category);
 
@@ -55,3 +56,5 @@ const ProductCardContainer = tw.div`
   py-5
   mx-14
 `;
+
+export default Products;

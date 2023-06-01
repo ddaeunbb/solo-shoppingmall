@@ -1,3 +1,4 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules";
@@ -13,7 +14,7 @@ import automotive from '../../assets/filter/automotive.png'
 import motocycle from '../../assets/filter/motorcycle.png'
 
 
-export default function Filter() {
+const Filter: FC = () => {
   const dispatch = useDispatch();
   const category = useSelector((state: RootState) => state.filterList.category);
   const tabHandler = (category: CategoryName)=>{
@@ -85,3 +86,5 @@ const FilterText = tw.span`
   text-sm
   font-semibold
 `
+
+export default Filter;

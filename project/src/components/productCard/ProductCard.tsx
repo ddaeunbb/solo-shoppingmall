@@ -1,3 +1,4 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import BookmarkButton from "../button/BookmarkButton";
@@ -6,7 +7,9 @@ interface ProductCardProps {
   product: ApiDataInterFace;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+const ProductCard : FC<ProductCardProps> = (props) => {
+  const { product } = props;
+
   return (
     <div>
       <ProductImage
@@ -48,3 +51,5 @@ const ProudctPrice = tw.span`
   text-sm
   font-light
 `;
+
+export default ProductCard;

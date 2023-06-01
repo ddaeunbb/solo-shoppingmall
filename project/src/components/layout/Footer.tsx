@@ -1,6 +1,7 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 
-export default function Footer() {
+const Footer : FC = () => {
   return (
     <FooterContainer>
       <FooterText>개인정보 처리방침 | 이용약관</FooterText>
@@ -24,3 +25,5 @@ const FooterText = tw.span`
   text-sm
   text-slate-400
 `;
+
+export default Footer

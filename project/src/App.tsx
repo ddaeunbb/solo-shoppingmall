@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useSelector} from "react-redux";
 import useFetch from "./hooks/useFetch";
@@ -9,7 +10,7 @@ import Main from "./pages/main/Main";
 import Bookmark from "./pages/bookmark/Bookmark";
 import Products from "./pages/products/Products";
 
-function App() {
+const App : FC = () => {
   useFetch('https://dummyjson.com/products?limit=100');
   const isOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
   
