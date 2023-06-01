@@ -5,7 +5,7 @@ import useFetch from "./hooks/useFetch";
 import { RootState } from "./modules";
 import Header from "./components/layout/Header";
 import HamburgerModal from "./components/modal/HamburgerModal";
-import DetailModal from "./components/modal/detailModal";
+import DetailModal from "./components/modal/DetailModal";
 import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
 import Bookmark from "./pages/bookmark/Bookmark";
