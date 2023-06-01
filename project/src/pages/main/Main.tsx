@@ -1,10 +1,11 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../modules";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
-export default function Main() {
+const Main : FC = () => {
   const productList = useSelector((state: RootState)  => state.productList.products);
   const VIEWCOUNT:number = 4;
 
@@ -55,3 +56,5 @@ const ListText = tw.h1`
   rounded-xl
   shadow-lg
 `;
+
+export default Main;

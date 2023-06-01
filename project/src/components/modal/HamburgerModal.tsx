@@ -1,9 +1,10 @@
+import { FC } from "react";
 import tw from "tailwind-styled-components";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
 
-export default function HamburgerModal() {
+const HamburgerModal : FC = () => {
   const dispatch = useDispatch();
 
   return (
@@ -65,3 +66,5 @@ const ModalList = tw.li`
   duration-200
   cursor-pointer
 `;
+
+export default HamburgerModal;
