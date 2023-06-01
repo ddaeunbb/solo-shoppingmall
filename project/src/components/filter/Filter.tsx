@@ -10,7 +10,7 @@ import total from '../../assets/filter/total.png'
 import smartphone from '../../assets/filter/smartphone.png'
 import laptop from '../../assets/filter/laptop.png'
 import automotive from '../../assets/filter/automotive.png'
-import motocycle from '../../assets/filter/motorcycle.png'
+import motorcycle from '../../assets/filter/motorcycle.png'
 
 
 const Filter: FC = () => {
@@ -57,7 +57,7 @@ const Filter: FC = () => {
       <FilterTab>
       <FilterImg 
       check={category === Categories.motorcycle} 
-      src={motocycle} 
+      src={motorcycle} 
       onClick={()=>tabHandler(Categories.motorcycle)}/>
       <FilterText>오토바이</FilterText>
       </FilterTab>
