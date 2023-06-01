@@ -1,8 +1,9 @@
 import { FC } from "react"
 import tw from "tailwind-styled-components";
 import DetailCard from "../productCard/DetailCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
+import { switchDetailModal } from "../../modules/detailModalSlice";
 
 const DetailModalContainer = tw.div`
   w-screen
@@ -18,10 +19,11 @@ const DetailModalContainer = tw.div`
 
 
 const DetailModal :FC  = () => {
+  const dispatch = useDispatch();
   const detailProduct = useSelector((state : RootState) => state.detailModal.modalContent)
 
   return (
-    <DetailModalContainer>
+    <DetailModalContainer onClick={()=>dispatch(switchDetailModal(false))}>
       <DetailCard product={detailProduct} />
     </DetailModalContainer>
   )

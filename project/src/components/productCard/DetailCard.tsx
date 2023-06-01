@@ -1,5 +1,7 @@
 import { FC } from "react"
 import tw from "tailwind-styled-components";
+import { useDispatch } from "react-redux";
+import { switchDetailModal } from "../../modules/detailModalSlice";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import BookmarkButton from "../button/BookmarkButton";
 interface DetailCardProps {
@@ -8,10 +10,13 @@ interface DetailCardProps {
 
 const DetailCard: FC<DetailCardProps> = (props) => {
   const { product } = props;
+  const dispatch = useDispatch();
 
   return (
     <DetailCardContainer style={{ backgroundImage: `url('${product.thumbnail}')` }}>
-      <DetailCardButton>X</DetailCardButton>
+      <DetailCardButton onClick={()=> dispatch(switchDetailModal(false))}>
+        X
+      </DetailCardButton>
       <DetailCardText>{product.title}</DetailCardText>
       <BookmarkButton id={product.id} bookmark={product.bookmark}/>
     </DetailCardContainer>
@@ -47,6 +52,8 @@ const DetailCardButton = tw.button`
   top-2
   right-3
   bg-white
+  border-2
+  shadow-md
   font-semibold
   cursor-pointer
   hover:scale-110
