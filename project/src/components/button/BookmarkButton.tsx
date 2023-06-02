@@ -6,6 +6,7 @@ import bookmarkOff from '../../assets/bookmark/bookmark-off.png'
 import { setBookmark } from "../../modules/productSlice";
 import setLocalStorage from "../../utils/setLocalStorage";
 import { setDetailModalBookmark } from "../../modules/detailModalSlice";
+import { addToast } from '../../modules/toastSlice'
 
 interface BookmarkButtonProps {
   id: number;
@@ -17,6 +18,7 @@ const BookmarkButton : FC<BookmarkButtonProps> = (props) => {
   const dispatch = useDispatch();
   const bookmarkHandler = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();
+    dispatch(addToast(!bookmark));
     dispatch(setBookmark(id));
     setLocalStorage(id);
     dispatch(setDetailModalBookmark());
