@@ -10,15 +10,18 @@ import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
 import Bookmark from "./pages/bookmark/Bookmark";
 import Products from "./pages/products/Products";
+import ToastAlram from "./components/toast/ToastAlram";
 
 const App : FC = () => {
   useFetch('https://dummyjson.com/products?limit=100');
   const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
   const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
+  const isAdd = useSelector((state: RootState)=> state.toastAlram.isAdd);
   
   return (
     <BrowserRouter>
       <Header />
+      {!isAdd && <ToastAlram />}
       {isHamburgerOpen && <HamburgerModal />}
       {isDetailOpen && <DetailModal />}
       <Routes>
