@@ -1,30 +1,36 @@
+import { FC } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { useEffect } from "react";
-import Header from "./components/layout/header";
+import { useSelector} from "react-redux";
+import useFetch from "./hooks/useFetch";
+import { RootState } from "./modules";
+import Header from "./components/layout/Header";
+import HamburgerModal from "./components/modal/HamburgerModal";
+import DetailModal from "./components/modal/DetailModal";
+import Footer from "./components/layout/Footer";
 import Main from "./pages/main/Main";
-import Likes from "./pages/likes/Likes";
+import Bookmark from "./pages/bookmark/Bookmark";
 import Products from "./pages/products/Products";
+import ToastAlram from "./components/toast/ToastAlram";
 
-import "./App.css";
-
-function App() {
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=100`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.products);
-      });
-  });
-
+const App : FC = () => {
+  useFetch('https://dummyjson.com/products?limit=100');
+  const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
+  const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
+  const toastList = useSelector((state: RootState)=> state.toastAlram.toastList);
+  
   return (
     <BrowserRouter>
       <Header />
-
+      {toastList.length > 0 && <ToastAlram />}
+      {isHamburgerOpen && <HamburgerModal />}
+      {isDetailOpen && <DetailModal />}
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/bookmark" element={<Likes />} />
+        <Route path="/bookmark" element={<Bookmark />} />
         <Route path="/products/list" element={<Products />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
