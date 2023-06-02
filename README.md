@@ -20,7 +20,38 @@
 
 
 ## Folder Structure
-
+```
+📦project
+ ┣ 📂public
+ ┣ 📂src
+ ┃ ┣ 📂assets
+ ┃ ┃ ┣ 📂bookmark
+ ┃ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂filter
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂button
+ ┃ ┃ ┣ 📂filter
+ ┃ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📂modal
+ ┃ ┃ ┣ 📂productCard
+ ┃ ┃ ┗ 📂toast
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂modules
+ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂bookmark
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┗ 📂products
+ ┃ ┣ 📂types
+ ┃ ┣ 📂utils
+ ┃ ┣ 📜App.tsx
+ ┃ ┣ 📜main.tsx
+ ┣ 📜.eslintrc.js
+ ┣ 📜index.html
+ ┣ 📜package.json
+ ┣ 📜tailwind.config.js
+ ┣ 📜tsconfig.json
+ ┗ 📜vite.config.ts
+```
 
 ## Feature
 
