@@ -12,8 +12,18 @@
 
 ## 1. BugFix
 #### 1-1 HamburgerModal
+![bugfix](https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/7bf435b0-7260-431e-a702-b2b980a47a52)
 - 햄버거 모달이 hover될 때마다, 안쪽 자식 요소가 부모요소 바깥으로 나오는 것을 수정해주었습니다.
-  - ![bugfix](https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/7bf435b0-7260-431e-a702-b2b980a47a52)
+
+
+#### 1-2 ToastAlram
+<img src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/eff617cd-01b3-4de3-836e-310be04fb4e3" width="600px">
+
+- 알림토스트가 추가될 때는 보이지만, 제거될 때는 보이지 않는 문제를 겪었습니다.
+- useSelector로 가져올 때마다 state의 값이 true이면 다른 컴포넌트를, false이면 다른 컴포넌트를 보여주게끔 하려했으나 서칭 중, 일반적으로 쓰이는 로직은 아니라는 피드백을 받게 되었습니다.
+- 따라서 state 값을 `queue`의 형태로 배열로 수정하고, 배열의 개수마다 알림토스트를 보이도록 수정하였습니다.
+  - 수정 후
+<img src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/0a18f403-15a2-468c-a1ba-03ba821300b1" width="600px">
 
 ## 2. 프로젝트 진행 중 배운 것
 #### 2-1 tailwind preflight
