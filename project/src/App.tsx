@@ -16,12 +16,12 @@ const App : FC = () => {
   useFetch('https://dummyjson.com/products?limit=100');
   const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
   const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
-  const isAdd = useSelector((state: RootState)=> state.toastAlram.isAdd);
+  const toastList = useSelector((state: RootState)=> state.toastAlram.toastList);
   
   return (
     <BrowserRouter>
       <Header />
-      {!isAdd && <ToastAlram />}
+      {toastList.length > 0 && <ToastAlram />}
       {isHamburgerOpen && <HamburgerModal />}
       {isDetailOpen && <DetailModal />}
       <Routes>

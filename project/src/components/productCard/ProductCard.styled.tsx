@@ -16,11 +16,11 @@ duration-300
 `;
 
 export const ProductTitle = tw.h3`
-  text-base
-  font-semibold
+text-base
+font-semibold
 `;
 
 export const ProudctPrice = tw.span`
-  text-sm
-  font-light
+text-sm
+font-light
 `;
