@@ -1,7 +1,8 @@
 # Solo ShoppingMall Project
 - 북마크 기능이 있는 상품페이지를 구현합니다. 기본적인 디자인은 <a href="https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&t=2WE0lwrhOr3Rt7Ax-0">해당 링크</a>에서 확인할 수 있습니다. 해당 프로젝트의 목적은 주어진 디자인에 맞추어 기능을 구현하는 방법론을 학습합니다.
-- 진행기간 : 2023.05.26~06.02
 - 기존에 만들었던 <a href="https://github.com/ddaeunbb/fe-sprint-coz-shopping">과제</a>를 타입스크립트 기반으로 리팩토링를 진행하였습니다.
+- 진행기간 : 2023.05.26~06.02
+- 리팩토링기간 : 2023.06.07~
 <br>
 
 ## Stack
