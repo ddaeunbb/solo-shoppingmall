@@ -56,7 +56,7 @@
 ```
 
 ## 페이지 구현 모습
-
+<video src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/d5c4523d-91e2-410e-88bf-64e1e857e211" controls="controls" muted="muted" style="max-height:640px; min-height: 200px;"></video>
 
 ## 1. BugFix
 #### 1-1 HamburgerModal
