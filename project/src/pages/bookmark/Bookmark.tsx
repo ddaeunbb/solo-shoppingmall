@@ -2,16 +2,16 @@ import { FC } from "react";
 import { ProductsContainer, ProductCardContainer } from "./Bookmark.styled";
 import Filter from "../../components/filter/Filter";
 import useUnlimitScroll from "../../hooks/useUnlimitScroll";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { RootState } from "../../modules";
-import { closeModal } from "../../modules/hamburgerModalSlice";
+import useCloseModal from "../../hooks/useCloseModal";
 import Categories from "../../types/categories";
 import ProductCard from "../../components/productCard/ProductCard";
 
 const Bookmark : FC  = () => {
-  const dispatch = useDispatch();
   const productList = useSelector((state: RootState)  => state.productList.products);
   const category = useSelector((state: RootState) => state.filterList.category);
+  const handleClickModal = useCloseModal();
 
   const DEFAULTPAGE: number = 8;
   const page = useUnlimitScroll(DEFAULTPAGE, productList.length);
@@ -19,7 +19,7 @@ const Bookmark : FC  = () => {
   switch(category){
     case Categories.total :
       return (
-        <ProductsContainer onClick={()=> dispatch(closeModal())}>
+        <ProductsContainer onClick={useCloseModal}>
           <Filter />
           <ProductCardContainer>
             {productList
@@ -34,7 +34,7 @@ const Bookmark : FC  = () => {
     
     default :
       return (
-        <ProductsContainer onClick={()=> dispatch(closeModal())}>
+        <ProductsContainer onClick={useCloseModal}>
           <Filter />
           <ProductCardContainer>
             {productList // 
