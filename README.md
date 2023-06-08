@@ -97,7 +97,7 @@ https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/78ce4c37-dcba-4fc5
 #### 2-3 tailwind-styled-components props
 - tw 모듈은 동적으로 클래스를 어떻게 할당할 수 있을지에 대해 헤매고 있었는데 <a href="https://jiwoo84.tistory.com/173">링크</a>를 통해서 동적 클래스 할당하는 방법을 알 수 있게 되었습니다.
 ##### 코드 수정 전 
-```
+```typescript
 const Image = tw.img`
   w-${(props) => props.width}
   h-${(props) => props.height}
@@ -105,7 +105,7 @@ const Image = tw.img`
 `
 ```
 ##### 코드 수정 후
-```
+```typescript
 interface ImageProps {
   width: number;
   height: number;
@@ -127,7 +127,7 @@ const Image = tw.img<ImageProps>`
 - 함수형 컴포넌트의 prop을 interface로 지정하고, 함수의 매개변수에 props의 타입을 지정해주었는데, React.FC를 사용하여 제네릭으로 props의 타입을 넘겨주었습니다.
 - <a href="https://react.vlpt.us/using-typescript/02-ts-react-basic.html">벨로퍼트와 함께하는 모던 리액트</a>를 보고 참고하여 해결하였습니다.
 ##### 코드 수정 전
-```
+```typescript
 interface ProductCardProps {
   product: ApiDataInterFace;
 }
@@ -135,7 +135,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) { ... }
 ```
 ##### 코드 수정 후
-```
+```typescript
 interface ProductCardProps {
   product: ApiDataInterFace;
 }
@@ -159,3 +159,111 @@ const ProductCard : FC<ProductCardProps> = (props) => {
   - styled-components의 방식(`ThemeProvider`)도 있었지만 클래스명만으로 쉽게 적용되는 것이, 제가 느끼기에 이 방법이 더 간편하게 느껴졌습니다.
 - 브라우저가 화면에 그리기전에 호출되는 `useLayoutEffect`를 활용하였습니다.
   - 다크 모드가 적용되기 전 화면을 그리고, useEffect가 수행되면서 다크 모드 화면을 그리게 됩니다. 직접 해보면 더 이해가 될텐데, useEffect로 구현을 해보면 아주 잠깐이지만 흰색 화면이 보였다가 다크모드가 적용되는 것을 확인할 수 있습니다.
+
+--- 
+
+#### 3-2 Redux-Thunk (createAsyncThunk)
+- 리듀서 함수는 순수함수이기 때문에 비동기 로직을 담을 수 없었어서 `useEffect`를 통해 한 번만 데이터를 가져왔었습니다. 로직은 useFetcth`라는 custom Hook으로 만들어 구현하였습니다.
+- 비동기 로직을 담을 수 있는 Thunk를 활용할 것인지 아니면 React-Query를 사용할 것인지 고민을 하다가, npm package 중 thunk를 더 많이 사용한다는 통계를 보고 thunk를 선택하게 되었습니다.
+- 또한 RTK-Query를 공부하기에는 Thunk를 이용하는 것이 더 좋을 것 같아 Thunk 방식을 사용하게 되었습니다.
+
+##### 기존 `useFetch` custom-Hook 코드
+
+```typescript
+export default function useFetch(initialUrl: string){
+  const dispatch = useDispatch();
+  const [url, setUrl] = useState<string>(initialUrl);
+  const [data, setData] = useState<ApiDataInterFace[]>([]);
+
+  const fetchData = async () => {
+    fetch(url)//
+      .then(res => res.json())
+      .then(data => {
+        const newData = getLocalStorage(data.products, 'id');
+        dispatch(setProducts(newData));
+        setData(newData);
+      })
+      .catch(error => console.log(error))
+  }
+
+  useEffect(()=>{
+    fetchData();
+  }, [url])
+
+  return [data, setUrl];
+}
+```
+
+
+##### 수정된 `productSlice.ts` 코드
+```typescript
+export const setProducts = createAsyncThunk(
+  "get/products",
+  async (url: string, { rejectWithValue })=> {
+    try {
+      const response = await fetch(url);
+      const parseData = await response.json();
+      const newData = await getLocalStorage(parseData.products, 'id');
+      return newData;
+    } catch(err: any) {
+      if(!err.response){
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+)
+
+const productSlice = createSlice({
+  name: "productSlice",
+  initialState,
+  reducers: {
+    setBookmark: (state, action: PayloadAction<number>)=> {
+      state.products = state.products.map(product => {
+        if(product.id === action.payload){
+          if (product.bookmark === undefined) product.bookmark = true;
+          else product.bookmark = !product.bookmark;
+        }
+        return product
+      })
+    }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(setProducts.fulfilled, (state, action: PayloadAction<ApiDataInterFace[]>) => {
+      state.products = action.payload;
+    });
+  }
+});
+```
+
+- 코드를 수정하고 나면서 보일러플레이트를 확실히 줄일 수 있었고, `createAsyncThunk`를 사용해서 쉽게 비동기 로직을 짤 수 있다는 것을 실제로 느껴볼 수 있었습니다.
+- 공부를 하면서 찾아보았던 자료들은 저의 <a href="https://ddaeunbb.tistory.com/294">블로그</a>에 상세히 적어두었습니다.
+
+--- 
+
+#### 3-3 `useAppSelector`, `useAppDispatch`로 보일러플레이트코드 제거
+- Thunk를 활용하는 과정에서, useDispatch에 type를 적지 않은 에러를 발견할 수 있었습니다. 이를 해결할 방법을 찾다가 <a href="https://react-redux.js.org/using-react-redux/usage-with-typescript#typing-the-usedispatch-hook">공식문서</a>에서 해결점을 찾을 수 있었습니다.
+- 공식문서에서 권장하는 바와 같이 `useAppSelector`, `useAppDispatch`라는 custom-hook을 만들어 사용하였습니다.
+- `useSelector`를 사용하면서 매번 `RootState`를 `import`해와서 `state`라는 매개변수에 매번 타입을 지정해주어야했는데, 이 보일러플레이트 코드를 제거할 수 있었습니다.
+
+##### 수정 이전 코드
+```typescript
+const Products : FC  = () => {
+  const productList = useSelector((state: RootState)  => state.productList.products);
+  const category = useSelector((state: RootState) => state.filterList.category);
+  const handleClickModal = useCloseModal();
+  
+  ...
+}
+```
+
+##### 수정 후 코드
+```typescript
+const Products : FC  = () => {
+  const productList = useAppSelector(state  => state.productList.products);
+  const category = useAppSelector(state => state.filterList.category);
+  const handleClickModal = useCloseModal();
+  
+  ...
+}
+```
