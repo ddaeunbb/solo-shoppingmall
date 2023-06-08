@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ProductImage, ProductTitle, ProudctPrice } from "./ProductCard.styled";
 import ApiDataInterFace from "../../modules/apidata.interface";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../modules/hooks";
 import { switchDetailModal, setDetailModalContent } from "../../modules/detailModalSlice";
 import BookmarkButton from "../button/BookmarkButton";
 
@@ -11,7 +11,7 @@ interface ProductCardProps {
 
 const ProductCard : FC<ProductCardProps> = (props) => {
   const { product } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const detailModalHandler = ()=>{
     dispatch(switchDetailModal(true));
     dispatch(setDetailModalContent(product));

@@ -9,7 +9,7 @@ const initialState: ProductType = {
   products: [],
 };
 
-export const setData = createAsyncThunk(
+export const setProducts = createAsyncThunk(
   "get/products",
   async (url: string)=> {
     const response = await fetch(url);
@@ -33,7 +33,7 @@ const productSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(setData.fulfilled, (state, action: PayloadAction<ApiDataInterFace[]>) => {
+    builder.addCase(setProducts.fulfilled, (state, action: PayloadAction<ApiDataInterFace[]>) => {
       state.products = action.payload;
     });
   }

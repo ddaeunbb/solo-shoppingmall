@@ -1,13 +1,12 @@
 import { FC } from "react";
 import { MainContainer, ProductContainer, ListText } from "./Main.styled";
-import { useSelector} from "react-redux";
-import { RootState } from "../../modules";
+import { useAppSelector } from "../../modules/hooks";
 import useCloseModal from "../../hooks/useCloseModal";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import ProductCard from "../../components/productCard/ProductCard";
 
 const Main : FC = () => {
-  const productList = useSelector((state: RootState)  => state.productList.products);
+  const productList = useAppSelector(state  => state.productList.products);
   const VIEWCOUNT:number = 4;
   const handleClickModal = useCloseModal()
 

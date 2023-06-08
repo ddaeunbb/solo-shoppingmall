@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { ModalContainer, ModalList } from "./HamburgerModal.styled";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../modules/hooks";
 import { closeModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
 
 const HamburgerModal : FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <ModalContainer>

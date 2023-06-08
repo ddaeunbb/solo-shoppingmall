@@ -2,10 +2,8 @@ import { FC } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from 'react';
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setData } from "./modules/productSlice";
-import { AppDispatch } from "./modules";
-import { RootState } from "./modules";
+import { useAppSelector, useAppDispatch } from "./modules/hooks";
+import { setProducts } from "./modules/productSlice";
 import Loading from "./components/loading/Loading";
 import Header from "./components/layout/Header";
 import HamburgerModal from "./components/modal/HamburgerModal";
@@ -19,14 +17,15 @@ const Products = lazy(()=> import('./pages/products/Products'))
 
 
 const App : FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
+
   useEffect(()=>{
-    dispatch(setData("https://dummyjson.com/products?limit=100"));
+    dispatch(setProducts("https://dummyjson.com/products?limit=100"));
   }, [])
 
-  const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
-  const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
-  const toastList = useSelector((state: RootState)=> state.toastAlram.toastList);
+  const isHamburgerOpen = useAppSelector((state) => state.hamburgerModal.isOpen);
+  const isDetailOpen = useAppSelector((state) => state.detailModal.isOpen);
+  const toastList = useAppSelector((state)=> state.toastAlram.toastList);
   
   return (
     <BrowserRouter>

@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { DetailCardContainer, DetailCardButton, DetailCardText} from "./DetailCard.styled";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../modules/hooks";
 import { switchDetailModal } from "../../modules/detailModalSlice";
 import ApiDataInterFace from "../../modules/apidata.interface";
 import BookmarkButton from "../button/BookmarkButton";
@@ -11,7 +11,7 @@ interface DetailCardProps {
 
 const DetailCard: FC<DetailCardProps> = (props) => {
   const { product } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <DetailCardContainer style={{ backgroundImage: `url('${product.thumbnail}')` }}>
