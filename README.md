@@ -137,3 +137,12 @@ const ProductCard : FC<ProductCardProps> = (props) => {
   const { product } = props; 
 ...
 ```
+
+## 3. 리팩토링
+#### 3-1 다크모드
+![다크모드](https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/30971529-27f1-4ec5-bc31-b8c74df06c95)
+- 버튼을 누르면 테마를 지정할 수 있는 기능을 추가하였습니다. (light mode / dark mode)
+- tailwind에서 dark모드를 활용하기 위해서, `dark:bg-gray-700`과 같이 `dark:`로 시작되는 클래스명이 다크모드에 적용된다는 것을 알게 되었습니다.
+- 또한, tailwind.cofing.js에도 darkMode를 class로 활용하겠다는 코드를 적어주어야한다는 것을 알게 되었습니다.
+  - 다크모드를 적용해보면서 클래스명만으로도 아주 손쉽게 모드를 적용할 수 있다는 것을 알게 되었습니다.
+  - styled-components의 방식(`ThemeProvider`)도 있었지만 클래스명만으로 쉽게 적용되는 것이, 제가 느끼기에 이 방법이 더 간편하게 느껴졌습니다.
