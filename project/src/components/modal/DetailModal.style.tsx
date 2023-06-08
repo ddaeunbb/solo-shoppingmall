@@ -5,6 +5,8 @@ export const DetailModalContainer = tw.div`
   h-screen
   bg-white/50
   backdrop-blur-sm
+  dark:bg-black/40
+  dark:backdrop-blur-sm
   fixed
   z-40
   flex

@@ -8,6 +8,7 @@ export const FooterContainer = tw.footer`
   items-center
   justify-center
   border-t
+  dark:border-slate-500
 `;
 
 export const FooterText = tw.span`

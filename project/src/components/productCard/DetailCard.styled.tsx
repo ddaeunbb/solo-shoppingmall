@@ -18,6 +18,8 @@ export const DetailCardText = tw.span`
   text-xs
   rounded-xl
   font-extrabold
+  dark:text-slate-100
+  dark:bg-gray-700
 `
 
 export const DetailCardButton = tw.button`
@@ -28,6 +30,7 @@ export const DetailCardButton = tw.button`
   top-2
   right-3
   bg-white
+  dark:bg-gray-700
   border-2
   shadow-md
   font-semibold
