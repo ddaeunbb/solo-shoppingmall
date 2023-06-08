@@ -11,7 +11,7 @@ const initialState: ProductType = {
 
 export const setData = createAsyncThunk(
   "get/products",
-  async (url: any)=> {
+  async (url: string)=> {
     const response = await fetch(url);
     const parseData = await response.json();
     return parseData.products;
@@ -22,10 +22,6 @@ const productSlice = createSlice({
   name: "productSlice",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<ApiDataInterFace[]>) => {
-      state.products = action.payload;
-    },
-
     setBookmark: (state, action: PayloadAction<number>)=> {
       state.products = state.products.map(product => {
         if(product.id === action.payload){
@@ -37,11 +33,11 @@ const productSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(setData.fulfilled, (state, action) => {
+    builder.addCase(setData.fulfilled, (state, action: PayloadAction<ApiDataInterFace[]>) => {
       state.products = action.payload;
     });
   }
 });
 
-export const { setProducts, setBookmark } = productSlice.actions;
+export const { setBookmark } = productSlice.actions;
 export default productSlice;

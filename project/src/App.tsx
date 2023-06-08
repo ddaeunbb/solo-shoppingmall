@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "./modules/productSlice";
 import { AppDispatch } from "./modules";
-import useFetch from "./hooks/useFetch";
 import { RootState } from "./modules";
 import Loading from "./components/loading/Loading";
 import Header from "./components/layout/Header";
@@ -21,9 +20,6 @@ const Products = lazy(()=> import('./pages/products/Products'))
 
 const App : FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  // useFetch('https://dummyjson.com/products?limit=100');
-
-
   useEffect(()=>{
     dispatch(setData("https://dummyjson.com/products?limit=100"));
   }, [])
