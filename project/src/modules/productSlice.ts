@@ -12,11 +12,18 @@ const initialState: ProductType = {
 
 export const setProducts = createAsyncThunk(
   "get/products",
-  async (url: string)=> {
-    const response = await fetch(url);
-    const parseData = await response.json();
-    const newData = await getLocalStorage(parseData.products, 'id');
-    return newData;
+  async (url: string, { rejectWithValue })=> {
+    try {
+      const response = await fetch(url);
+      const parseData = await response.json();
+      const newData = await getLocalStorage(parseData.products, 'id');
+      return newData;
+    } catch(err: any) {
+      if(!err.response){
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
 )
 
