@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import ApiDataInterFace from "./apidata.interface";
+import getLocalStorage from "../utils/getLocalStorage";
 
 interface ProductType {
   products: ApiDataInterFace[];
@@ -14,7 +15,8 @@ export const setProducts = createAsyncThunk(
   async (url: string)=> {
     const response = await fetch(url);
     const parseData = await response.json();
-    return parseData.products;
+    const newData = await getLocalStorage(parseData.products, 'id');
+    return newData;
   }
 )
 
