@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { DetailModalContainer } from "./DetailModal.style";
+import { DetailModalContainer } from "./DetailModal.styled";
 import DetailCard from "../productCard/DetailCard";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
