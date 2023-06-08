@@ -157,3 +157,5 @@ const ProductCard : FC<ProductCardProps> = (props) => {
 - 또한, tailwind.cofing.js에도 darkMode를 class로 활용하겠다는 코드를 적어주어야한다는 것을 알게 되었습니다.
   - 다크모드를 적용해보면서 클래스명만으로도 아주 손쉽게 모드를 적용할 수 있다는 것을 알게 되었습니다.
   - styled-components의 방식(`ThemeProvider`)도 있었지만 클래스명만으로 쉽게 적용되는 것이, 제가 느끼기에 이 방법이 더 간편하게 느껴졌습니다.
+- 브라우저가 화면에 그리기전에 호출되는 `useLayoutEffect`를 활용하였습니다.
+  - 다크 모드가 적용되기 전 화면을 그리고, useEffect가 수행되면서 다크 모드 화면을 그리게 됩니다. 직접 해보면 더 이해가 될텐데, useEffect로 구현을 해보면 아주 잠깐이지만 흰색 화면이 보였다가 다크모드가 적용되는 것을 확인할 수 있습니다.
