@@ -149,7 +149,7 @@ const ProductCard : FC<ProductCardProps> = (props) => {
 <br>
 <br>
 
-## 3. 리팩토링
+## 3. 리팩토링 (06.07~)
 #### 3-1 다크모드
 ![다크모드](https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/30971529-27f1-4ec5-bc31-b8c74df06c95)
 - 버튼을 누르면 테마를 지정할 수 있는 기능을 추가하였습니다. (light mode / dark mode)
