@@ -61,6 +61,8 @@
 https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/78ce4c37-dcba-4fc5-95e4-c9e9f5c6d380
 
 <br>
+<br>
+<br>
 
 ## 1. BugFix
 #### 1-1 HamburgerModal
@@ -76,6 +78,11 @@ https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/78ce4c37-dcba-4fc5
 - 따라서 state 값을 `queue`의 형태로 배열로 수정하고, 배열의 개수마다 알림토스트를 보이도록 수정하였습니다.
   - 수정 후
 <img src="https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/0a18f403-15a2-468c-a1ba-03ba821300b1" width="600px">
+
+<br>
+<br>
+<br>
+
 
 ## 2. 프로젝트 진행 중 배운 것
 #### 2-1 tailwind preflight
@@ -137,6 +144,10 @@ const ProductCard : FC<ProductCardProps> = (props) => {
   const { product } = props; 
 ...
 ```
+
+<br>
+<br>
+<br>
 
 ## 3. 리팩토링
 #### 3-1 다크모드
