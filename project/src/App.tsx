@@ -1,7 +1,10 @@
 import { FC } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { lazy, Suspense } from 'react';
-import { useSelector} from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setData } from "./modules/productSlice";
+import { AppDispatch } from "./modules";
 import useFetch from "./hooks/useFetch";
 import { RootState } from "./modules";
 import Loading from "./components/loading/Loading";
@@ -17,7 +20,14 @@ const Products = lazy(()=> import('./pages/products/Products'))
 
 
 const App : FC = () => {
-  useFetch('https://dummyjson.com/products?limit=100');
+  const dispatch = useDispatch<AppDispatch>();
+  // useFetch('https://dummyjson.com/products?limit=100');
+
+
+  useEffect(()=>{
+    dispatch(setData("https://dummyjson.com/products?limit=100"));
+  }, [])
+
   const isHamburgerOpen = useSelector((state: RootState) => state.hamburgerModal.isOpen);
   const isDetailOpen = useSelector((state: RootState) => state.detailModal.isOpen);
   const toastList = useSelector((state: RootState)=> state.toastAlram.toastList);

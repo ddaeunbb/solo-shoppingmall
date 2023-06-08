@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import ApiDataInterFace from "./apidata.interface";
 
 interface ProductType {
@@ -8,6 +8,15 @@ interface ProductType {
 const initialState: ProductType = {
   products: [],
 };
+
+export const setData = createAsyncThunk(
+  "get/products",
+  async (url: any)=> {
+    const response = await fetch(url);
+    const parseData = await response.json();
+    return parseData.products;
+  }
+)
 
 const productSlice = createSlice({
   name: "productSlice",
@@ -27,6 +36,11 @@ const productSlice = createSlice({
       })
     }
   },
+  extraReducers: (builder) => {
+    builder.addCase(setData.fulfilled, (state, action) => {
+      state.products = action.payload;
+    });
+  }
 });
 
 export const { setProducts, setBookmark } = productSlice.actions;
