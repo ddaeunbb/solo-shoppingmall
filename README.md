@@ -267,3 +267,32 @@ const Products : FC  = () => {
   ...
 }
 ```
+
+--- 
+
+#### 3-4 Tree-Shaking의 관점에서의 `enum`
+- 실제 현업에 계신 개발자분께서 enum의 사용을 권장치 않으며 `as const`를 사용하시길 권장하셔서 코드를 수정하였습니다.
+- `enum`코드를 트랜스파일하면 IIFE(즉시 실행 함수)로 컴파일 되기 때문에, enum을 선언하고 사용하지 않더라도 실제 컴파일된 코드는 `enum`코드는 살아있게 됩니다.
+- 따라서 `enum`보다는 `union type`을 쓰기를 권장한다고 하네요, `as const` > `const enum` > `enum` 순으로 사용하길 권장하고 있다고해, as const로 코드를 수정하였습니다.
+
+##### 수정 이전 코드
+```typescript
+enum Categories {
+  total = 'total',
+  smartphones = 'smartphones',
+  laptops = 'laptops',
+  automotive = 'automotive',
+  motorcycle = 'motorcycle',
+}
+```
+
+##### 수정 후 코드
+```typescript
+const Categories = {
+  total: 'total',
+  smartphones: 'smartphones',
+  laptops: 'laptops',
+  automotive: 'automotive',
+  motorcycle: 'motorcycle',
+} as const
+```
