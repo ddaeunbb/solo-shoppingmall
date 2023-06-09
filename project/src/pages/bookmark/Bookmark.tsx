@@ -15,6 +15,13 @@ const Bookmark : FC  = () => {
   const category = useAppSelector(state => state.filterList.category);
   const handleClickModal = useCloseModal();
 
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [])
+
   useEffect(()=> {
     if(inView){
       if( page === productList.length) return;
