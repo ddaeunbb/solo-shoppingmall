@@ -296,3 +296,39 @@ const Categories = {
   motorcycle: 'motorcycle',
 } as const
 ```
+
+
+--- 
+
+#### 3-5 `react-intersection-observer` 라이브러리 활용
+- `useUnlimitScroll` custom-hook을 활용해서 무한스크롤을 구현하였었는데 `react-interserction-observer` 라이브러리를 활용해보았습니다.
+- `useInView`훅을 사용하면 `useRef` 훅처럼 DOM요소에 `ref`로 달아 활용할 수 있어 아주 간편하게 느껴졌습니다.
+- 따라서 저는 컴포넌트 맨 마지막에 div 태그에 ref를 달아 true일 때 보여줄 데이터의 개수를 변경해주며 무한스크롤을 구현하였습니다.
+
+##### 구현 코드
+```typescript
+const Products : FC  = () => {
+  const [ref, inView]= useInView();
+  const DEFAULT_PAGE = 8;
+  const [page, setPage] = useState<number>(DEFAULT_PAGE);
+  ...
+
+
+  useEffect(()=> {
+    if(inView){
+      if( page === productList.length) return;
+      setPage(prev => prev + DEFAULT_PAGE);
+    }
+  }, [inView]);
+  
+      return (
+        <ProductsContainer onClick={handleClickModal}>
+          <Filter />
+          <ProductCardContainer>
+            {productList.slice(0, page).map(product => 
+              (<ProductCard key={product.id} product={product} />)
+            )}
+          </ProductCardContainer>
+          <div ref={ref}/> // 추가해준 ref
+    ...
+```
