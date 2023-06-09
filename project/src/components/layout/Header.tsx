@@ -1,13 +1,14 @@
 import { FC } from "react";
 import { HeaderContainer, LogoText, Image } from "./Header.styled";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../modules/hooks";
 import { switchModal } from "../../modules/hamburgerModalSlice";
 import { Link } from "react-router-dom";
 import logo from "../../assets/common/logo.png";
+import ThemeButton from "../button/ThemeButton";
 import hamburger from "../../assets/common/hamburger.png";
 
 const Header: FC  = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <HeaderContainer>
@@ -19,14 +20,19 @@ const Header: FC  = () => {
           <LogoText>Smart</LogoText>
         </Link>
       </div>
-      <Image
-        src={hamburger}
-        width={32}
-        height={9}
-        onClick={() => {
-          dispatch(switchModal());
-        }}
-      />
+
+      <div className="flex items-center gap-5">
+        <ThemeButton />
+        <Image
+          className="dark:invert"
+          src={hamburger}
+          width={32}
+          height={9}
+          onClick={() => {
+            dispatch(switchModal());
+          }}
+        />
+      </div>
     </HeaderContainer>
   );
 }

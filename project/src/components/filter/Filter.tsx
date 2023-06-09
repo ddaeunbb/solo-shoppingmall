@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { FilterContainer, FilterTab, FilterImg, FilterText } from "./Filter.styled";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../modules";
+import { useAppDispatch, useAppSelector } from "../../modules/hooks";
 import { setTab } from "../../modules/filterSlice";
 import { CategoryName } from "../../types/categories";
 import Categories from "../../types/categories";
@@ -14,8 +13,8 @@ import motorcycle from '../../assets/filter/motorcycle.png'
 
 
 const Filter: FC = () => {
-  const dispatch = useDispatch();
-  const category = useSelector((state: RootState) => state.filterList.category);
+  const dispatch = useAppDispatch();
+  const category = useAppSelector(state => state.filterList.category);
   const tabHandler = (category: CategoryName)=>{
     dispatch(setTab(category));
   }

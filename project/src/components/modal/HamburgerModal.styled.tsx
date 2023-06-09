@@ -4,6 +4,7 @@ export const ModalContainer = tw.ul`
   w-52
   h-36
   bg-white
+  dark:bg-gray-700
   drop-shadow-xl
   rounded-xl
   border-solid
@@ -24,6 +25,7 @@ export const ModalList = tw.li`
   items-center
   text-base
   hover:bg-slate-200
+  hover:dark:bg-slate-400
   ease-in
   duration-200
   cursor-pointer

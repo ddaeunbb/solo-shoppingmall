@@ -1,13 +1,12 @@
 import { FC } from "react"
-import { DetailModalContainer } from "./DetailModal.style";
+import { DetailModalContainer } from "./DetailModal.styled";
 import DetailCard from "../productCard/DetailCard";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../modules";
+import { useAppDispatch, useAppSelector } from "../../modules/hooks";
 import { switchDetailModal } from "../../modules/detailModalSlice";
 
 const DetailModal :FC  = () => {
-  const dispatch = useDispatch();
-  const detailProduct = useSelector((state : RootState) => state.detailModal.modalContent)
+  const dispatch = useAppDispatch();
+  const detailProduct = useAppSelector(state => state.detailModal.modalContent)
 
   return (
     <DetailModalContainer onClick={()=>dispatch(switchDetailModal(false))}>

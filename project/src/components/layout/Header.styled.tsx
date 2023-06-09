@@ -4,6 +4,7 @@ export const HeaderContainer = tw.div`
   box-border
   h-20
   w-100%
+  dark:bg-gray-800
   bg-white
   drop-shadow-lg
   flex

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { BookmarkButtonContainer } from "./BookmarkButton.styled";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../modules/hooks";
 import bookmarkOn from '../../assets/bookmark/bookmark-on.png'
 import bookmarkOff from '../../assets/bookmark/bookmark-off.png'
 import { setBookmark } from "../../modules/productSlice";
@@ -15,7 +15,7 @@ interface BookmarkButtonProps {
 
 const BookmarkButton : FC<BookmarkButtonProps> = (props) => {
   const { id, bookmark } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const bookmarkHandler = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
     event.stopPropagation();
     dispatch(addToast(!bookmark));
