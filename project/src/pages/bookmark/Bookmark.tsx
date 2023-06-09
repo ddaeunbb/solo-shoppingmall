@@ -1,24 +1,31 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { ProductsContainer, ProductCardContainer } from "./Bookmark.styled";
 import Filter from "../../components/filter/Filter";
-import useUnlimitScroll from "../../hooks/useUnlimitScroll";
 import { useAppSelector } from "../../modules/hooks";
 import useCloseModal from "../../hooks/useCloseModal";
 import Categories from "../../types/categories";
 import ProductCard from "../../components/productCard/ProductCard";
 
 const Bookmark : FC  = () => {
+  const [ref, inView]= useInView();
+  const DEFAULT_PAGE = 8;
+  const [page, setPage] = useState<number>(DEFAULT_PAGE);
   const productList = useAppSelector(state  => state.productList.products);
   const category = useAppSelector(state => state.filterList.category);
   const handleClickModal = useCloseModal();
 
-  const DEFAULTPAGE: number = 8;
-  const page = useUnlimitScroll(DEFAULTPAGE, productList.length);
+  useEffect(()=> {
+    if(inView){
+      if( page === productList.length) return;
+      setPage(prev => prev + DEFAULT_PAGE);
+    }
+  }, [inView])
 
   switch(category){
     case Categories.total :
       return (
-        <ProductsContainer onClick={useCloseModal}>
+        <ProductsContainer onClick={handleClickModal}>
           <Filter />
           <ProductCardContainer>
             {productList
@@ -28,12 +35,13 @@ const Bookmark : FC  = () => {
                 (<ProductCard key={product.id} product={product} />)
             )}
           </ProductCardContainer>
+          <div ref={ref} />
         </ProductsContainer>
       )
     
     default :
       return (
-        <ProductsContainer onClick={useCloseModal}>
+        <ProductsContainer onClick={handleClickModal}>
           <Filter />
           <ProductCardContainer>
             {productList // 
@@ -42,6 +50,7 @@ const Bookmark : FC  = () => {
               (<ProductCard key={product.id} product={product} />)
             )}
           </ProductCardContainer>
+          <div ref={ref} />
         </ProductsContainer>
       )
   }
