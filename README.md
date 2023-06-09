@@ -1,8 +1,8 @@
 # Solo ShoppingMall Project
 - 북마크 기능이 있는 상품페이지를 구현합니다. 기본적인 디자인은 <a href="https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?type=design&t=2WE0lwrhOr3Rt7Ax-0">해당 링크</a>에서 확인할 수 있습니다. 해당 프로젝트의 목적은 주어진 디자인에 맞추어 기능을 구현하는 방법론을 학습합니다.
 - 기존에 만들었던 <a href="https://github.com/ddaeunbb/fe-sprint-coz-shopping">과제</a>를 타입스크립트 기반으로 리팩토링를 진행하였습니다.
-- 진행기간 : 2023.05.26~06.02
-- 리팩토링기간 : 2023.06.07~
+- 진행기간 : 2023.05.26 ~ 06.02
+- 리팩토링기간 : 2023.06.07 ~ 06.09
 <br>
 
 ## Stack
@@ -63,6 +63,8 @@ https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/78ce4c37-dcba-4fc5
 <br>
 <br>
 <br>
+<br>
+
 
 ## 1. BugFix
 #### 1-1 HamburgerModal
@@ -148,8 +150,9 @@ const ProductCard : FC<ProductCardProps> = (props) => {
 <br>
 <br>
 <br>
+<br>
 
-## 3. 리팩토링 (06.07~)
+## 3. 리팩토링 (06.07~06.09)
 #### 3-1 다크모드
 ![다크모드](https://github.com/ddaeunbb/solo-shoppingmall/assets/82816029/30971529-27f1-4ec5-bc31-b8c74df06c95)
 - 버튼을 누르면 테마를 지정할 수 있는 기능을 추가하였습니다. (light mode / dark mode)
@@ -332,3 +335,22 @@ const Products : FC  = () => {
           <div ref={ref}/> // 추가해준 ref
     ...
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+## 4. 솔로프로젝트를 진행하면서 느낀점
+- 처음에 솔로프로젝트를 해보면서 '구현'에만 초점을 맞추고 진행을 하다보니, 깃 브렌치명, 커밋명, 구현 순서 등 여러 가지 세세한 부분들에 신경을 쓰지 못했다고 느꼈습니다.
+- 타입스크립트를 처음에 배울 때에는 타입을 하나씩 지정해주어야해서, 좀 귀찮고 불편하다고 생각이 들었는데 실제로 코드에 타입을 주입해보면서 사람들이 편하다고 했던 이유를 조금이나마 실감할 수 있었습니다.
+- 오히려 자바스크립트가 불편하게 느껴지게 된 프로젝트였습니다. 타입스크립트에 많이 적응할 수 있었고, 적응하다보니 더 편하다고 느끼게 된 것 같습니다.
+- 리팩토링 하고 나서도 또 추가적으로 하고싶었던 리팩토링을 진행하면서 배운 것이 많았습니다.
+- 새로운 라이브러리를 실제 프로젝트에 활용해보았고 Redux-Thunk, 그리고 새로운 React-hook(useLayoutEffect)을 활용해보면서 새로운 것들에 나중에 더 쉽게 도전할 수 있다는 자신감을 갖게 되었습니다.
+- 아쉬운 점이 있다면 React-Query나 RTK-Query같은 것을 활용해 보지 못한게 아쉬웠습니다. 추후 다른 프로젝트에 적용해보고 싶습니다.
+- 또한 prettier, eslint, husky도 적용해보고 싶습니다.
+
+<br>
+<br>
+<br>
+<br>
